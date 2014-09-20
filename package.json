@@ -1,0 +1,24 @@
+{
+  "name": "audiolathe",
+  "version": "0.0.1",
+  "description": "a basic audio synth",
+  "main": "index.html",
+  "scripts": {
+    "start": "nodewebkit",
+    "test": "mocha test"
+  },
+  "keywords": [
+    "webaudio"
+  ],
+  "author": "Peter de Croos",
+  "license": "MIT",
+  "dependencies": {
+    "famous": "^0.2.2",
+    "immutable": "^2.0.17",
+    "nodewebkit": "^0.10.5",
+    "react": "^0.11.2",
+    "react-tools": "^0.11.2",
+    "rx": "^2.3.9",
+    "sandbox": "^0.8.6"
+  }
+}
