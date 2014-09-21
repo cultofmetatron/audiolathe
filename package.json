@@ -16,9 +16,20 @@
     "famous": "^0.2.2",
     "immutable": "^2.0.17",
     "nodewebkit": "^0.10.5",
+    "numeric": "^1.2.6",
     "react": "^0.11.2",
     "react-tools": "^0.11.2",
     "rx": "^2.3.9",
     "sandbox": "^0.8.6"
+  },
+  "devDependencies": {
+      "gulp": "~3.2.4",
+      "gulp-jshint": "~1.3.4",
+      "gulp-livereload": "~0.1.1",
+      "connect-livereload": "~0.3.2",
+      "tiny-lr": "0.0.5",
+      "connect": "~2.12.0"
   }
 }
+
+
