@@ -66,6 +66,6 @@ var spring = {
 };
 
 stateModifier.setTransform(
-  Transform.translate(0, 300, 0), spring
+  Transform.translate(0, 200, 0), spring
 );
 
