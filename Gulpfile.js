@@ -4,6 +4,14 @@ var browserify = require('gulp-browserify');
 var WEB_PORT = 9000;
 var APP_DIR = 'app';
 var run = require('gulp-run');
+var nodemon = require('gulp-nodemon');
+var livereload = require('gulp-livereload');
+var path = require('path');
+var react = require('gulp-react');
+var sourcemaps = require('gulp-sourcemaps');
+var traceur = require('gulp-traceur');
+var nodemon = require('gulp-nodemon')
+
 /*
  * Tthings that must happen
  *  - compile all js files in src/web into build/web
@@ -11,11 +19,28 @@ var run = require('gulp-run');
  *    * run node webkit
 */
 gulp.task('scripts', function() {
+  return gulp.src('./src/**/*.js')
+    .pipe(react({harmony: true}))
+    .pipe(sourcemaps.init())
+    .pipe(traceur())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./build'));
+});
 
+gulp.task('serve', function() {
+  nodemon({ 
+    script: path.join(__dirname, 'build', 'node', 'index.js'), 
+    ext: 'html js',
+    watch: [path.join(__dirname, 'build', 'node'), path.join(__dirname, 'views')],
+    ignore: ['ignored.js'] })
+  .on('restart', function () {
+    console.log('restarted!')
+  });
 });
 
 gulp.task('default', function() {
-  run('npm start').exec();
+  livereload.listen();
+  gulp.run('serve');
   gulp.watch('./src/**/*.js',['scripts']);
   
 });
