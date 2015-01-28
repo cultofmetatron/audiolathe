@@ -13,11 +13,11 @@ app.get('/', function(req, res, next) {
   res.render('app', {});
 });
 
-
-
 module.exports = app;
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
+console.log('now listening on ', port)
+app.listen(port);
 
 
 

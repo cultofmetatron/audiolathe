@@ -9,6 +9,8 @@ app.get('/', function(req, res, next) {
   res.render('app', {});
 });
 module.exports = app;
-app.listen(3000);
-//# sourceURL=node/index.js
-//# sourceMappingURL=../node/index.js.map
+var port = process.env.PORT || 3000;
+console.log('now listening on ', port);
+app.listen(port);
+//# sourceURL=index.js
+//# sourceMappingURL=index.js.map

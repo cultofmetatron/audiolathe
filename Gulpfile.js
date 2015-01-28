@@ -11,21 +11,42 @@ var react = require('gulp-react');
 var sourcemaps = require('gulp-sourcemaps');
 var traceur = require('gulp-traceur');
 var nodemon = require('gulp-nodemon')
-
+var reactify = require('gulp-reactify');
+var famousify = require('famousify');
+var famousPath = path.join(__dirname, '../node_modules/famous');
 /*
  * Tthings that must happen
  *  - compile all js files in src/web into build/web
  *    * run it through flow and jsx : sweet fat arrow lambdas n generators brah
  *    * run node webkit
 */
+
 gulp.task('scripts', function() {
-  return gulp.src('./src/**/*.js')
-    .pipe(react({harmony: true}))
+  return gulp.src('./src/node/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(traceur())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./build/node'));
 });
+
+gulp.task('frontend', function() {
+  return gulp.src('./src/web/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(traceur())
+    .pipe(browserify({
+      insertGlobals : true,
+      debug : true,
+      transform: [
+        ['famousify'],
+        ["reactify", {"es6": true}]
+      ]
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/web'));
+});
+
+
+
 
 gulp.task('serve', function() {
   nodemon({ 
@@ -41,7 +62,7 @@ gulp.task('serve', function() {
 gulp.task('default', function() {
   livereload.listen();
   gulp.run('serve');
-  gulp.watch('./src/**/*.js',['scripts']);
+  gulp.watch('./src/**/*.js',['frontend', 'scripts']);
   
 });
 

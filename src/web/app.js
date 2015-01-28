@@ -1,3 +1,5 @@
+
+var react = require('react');
 var Engine = require('famous/core/Engine');
 var Surface = require('famous/core/Surface');
 var Transform = require('famous/core/Transform');
@@ -34,5 +36,6 @@ stateModifier.setTransform(
   Transform.translate(0, 200, 0), spring
 );
 
+var msg = (x) => { return x + ' world!'}
 
-console.log('hello Nurse!!')
+console.log(msg('hello'))
