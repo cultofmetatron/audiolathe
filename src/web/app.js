@@ -21,7 +21,7 @@ var surface = new Surface({
 });
 
 var stateModifier = new StateModifier({
-  origin: [0.5, 0]
+  origin: [-5, 0]
 });
 
 mainContext.add(stateModifier).add(surface);
@@ -33,10 +33,10 @@ var spring = {
 };
 
 stateModifier.setTransform(
-  Transform.translate(0, 200, 0), spring
+  Transform.translate(0, 300, 0), spring
 );
 
-//var msg = (x) => { return x + ' world!'}
+var msg = (x) => { return x + ' world!'}
 
 
 var TimerExample = React.createClass({
@@ -95,4 +95,4 @@ React.render(
 
 
 
-//console.log(msg('hello'))
+console.log(msg('hello'))

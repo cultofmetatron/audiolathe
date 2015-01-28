@@ -38,6 +38,7 @@ gulp.task('frontend', function() {
       debug : true,
       transform: [
         ["reactify", {"es6": true}],
+        ['es6ify'],
         ['famousify']
       ]
     }))
