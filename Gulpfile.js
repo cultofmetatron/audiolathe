@@ -32,13 +32,13 @@ gulp.task('scripts', function() {
 gulp.task('frontend', function() {
   return gulp.src('./src/web/**/*.js')
     .pipe(sourcemaps.init())
-    .pipe(traceur())
+    //.pipe(traceur())
     .pipe(browserify({
       insertGlobals : true,
       debug : true,
       transform: [
-        ['famousify'],
-        ["reactify", {"es6": true}]
+        ["reactify", {"es6": true}],
+        ['famousify']
       ]
     }))
     .pipe(sourcemaps.write())
