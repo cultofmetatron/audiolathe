@@ -8,6 +8,7 @@ app.set('views', [path.join(__dirname, '..', '..', 'views')]);
 
 
 app.use('/web', express.static(path.join(__dirname, '..', 'web')))
+app.use('/styles', express.static(path.join(__dirname, '..', 'styles')));
 
 app.get('/', function(req, res, next) {
   res.render('app', {});

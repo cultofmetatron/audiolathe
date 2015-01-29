@@ -70,7 +70,10 @@ gulp.task('serve', function() {
 gulp.task('default', function() {
   livereload.listen();
   gulp.run('serve');
-  gulp.watch('./src/**/*.js',['frontend', 'scripts']);
+  gulp.run('less')
+  gulp.run('frontend');
+  gulp.run('scripts');
+  gulp.watch('./src/**/*.js',['frontend', 'scripts', 'less']);
   
 });
 
