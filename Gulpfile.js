@@ -14,6 +14,8 @@ var nodemon = require('gulp-nodemon')
 var reactify = require('gulp-reactify');
 var famousify = require('famousify');
 var famousPath = path.join(__dirname, '../node_modules/famous');
+var less = require('gulp-less');
+
 /*
  * Tthings that must happen
  *  - compile all js files in src/web into build/web
@@ -32,7 +34,6 @@ gulp.task('scripts', function() {
 gulp.task('frontend', function() {
   return gulp.src('./src/web/**/*.js')
     .pipe(sourcemaps.init())
-    //.pipe(traceur())
     .pipe(browserify({
       insertGlobals : true,
       debug : true,
@@ -46,7 +47,13 @@ gulp.task('frontend', function() {
     .pipe(gulp.dest('./build/web'));
 });
 
-
+gulp.task('less', function() {
+  gulp.src('./src/styles/**/*.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('./build/styles'));
+});
 
 
 gulp.task('serve', function() {

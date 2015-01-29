@@ -23,6 +23,7 @@
     "famousify": "^0.1.5",
     "gulp": "^3.8.10",
     "gulp-browserify": "^0.5.1",
+    "gulp-less": "^2.0.1",
     "gulp-nodemon": "^1.0.5",
     "gulp-react": "^2.0.0",
     "gulp-reactify": "^1.1.0",
